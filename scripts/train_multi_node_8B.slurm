@@ -13,7 +13,7 @@ export PYTHONPATH="$PYTHONPATH:/."
 module load python/3.11
 module load arrow
 module load cuda/12
-source $SCRATCH/env/ds2d/bin/activate
+source $SCRATCH/env/floorplan-generation/bin/activate
 
 EPOCHS=${1:-6} 
 OUTPUT_DIR="output/rplan_${EPOCHS}_8B_r256_a512/"
@@ -45,4 +45,4 @@ srun torchrun --nnodes $num_nodes --nproc_per_node 4 --rdzv_id $RANDOM --rdzv_ba
     --num_workers_dataloader 32 \
     --output_dir $OUTPUT_DIR \
     --use_wandb True \
-    --wandb_config.project "ds2d"
+    --wandb_config.project "floorplan-generation"

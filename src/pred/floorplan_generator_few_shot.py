@@ -128,7 +128,7 @@ class FloorplanGenerator:
             
             # Third priority: compatibility score
             try:
-                input_graph = RPLANGraph.from_ds2d(output_json)
+                input_graph = RPLANGraph.from_floorplan_json(output_json)
                 expected_graph = RPLANGraph.from_labeled_adjacency(
                     input_prompt.get("input_graph", {})
                 )

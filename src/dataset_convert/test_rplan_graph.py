@@ -6,9 +6,9 @@ from test_fixtures import *
 class TestCompatibility:
     """Test compatibility of RPLANGraph floorplan graphs"""
     
-    def test_sample_ds2d_compatibility(self, sample_ds2d_data):
+    def test_sample_floorplan_json_compatibility(self, sample_floorplan_json_data):
         """Test expected connectivity of the 7-room sample"""
-        graph = RPLANGraph.from_ds2d(sample_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(sample_floorplan_json_data)
         
         # Should have 8 room nodes (7 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 8
@@ -32,9 +32,9 @@ class TestCompatibility:
             largest_component_size = max(len(c) for c in components)
             assert largest_component_size >= 5, f"Largest component has only {largest_component_size} spaces"
 
-    def test_complex_floorplan_compatibility(self, complex_ds2d_data):
+    def test_complex_floorplan_compatibility(self, complex_floorplan_json_data):
         """Test connectivity of complex 8-room floorplan with expected adjacency"""
-        graph = RPLANGraph.from_ds2d(complex_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(complex_floorplan_json_data)
         
         # Should have 9 room nodes (8 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 9
@@ -78,9 +78,9 @@ class TestCompatibility:
         living_room_connections = len(labeled_adj.get('living_room', []))
         assert living_room_connections == 6, f"Living room should have 6 connections, got {living_room_connections}"
 
-    def test_generated_floorplan_compatibility(self, generated_ds2d_data):
+    def test_generated_floorplan_compatibility(self, generated_floorplan_json_data):
         """Test compatibility of generated floorplan with expected disconnected spaces"""
-        graph = RPLANGraph.from_ds2d(generated_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(generated_floorplan_json_data)
         
         # Should have 8 room nodes (7 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 8
@@ -134,9 +134,9 @@ class TestCompatibility:
         largest_component = max(components, key=len)
         assert len(largest_component) == 5, f"Largest component should have 5 spaces, got {len(largest_component)}"
 
-    def test_double_connection_balcony_compatibility(self, double_connection_balcony_ds2d_data):
+    def test_double_connection_balcony_compatibility(self, double_connection_balcony_floorplan_json_data):
         """Test connectivity of 8-room floorplan with balcony having double connections"""
-        graph = RPLANGraph.from_ds2d(double_connection_balcony_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(double_connection_balcony_floorplan_json_data)
         
         # Should have 9 room nodes (8 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 9
@@ -182,9 +182,9 @@ class TestCompatibility:
         expected_edges = sum(len(neighbors) for neighbors in expected_adjacency.values()) // 2
         assert total_edges == expected_edges, f"Expected {expected_edges} edges, got {total_edges}"
 
-    def test_containment_issue_compatibility(self, containment_issue_ds2d_data):
+    def test_containment_issue_compatibility(self, containment_issue_floorplan_json_data):
         """Test that spaces contained within other spaces do not create invalid connections"""
-        graph = RPLANGraph.from_ds2d(containment_issue_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(containment_issue_floorplan_json_data)
         
         # Should have 9 room nodes (8 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 9
@@ -234,7 +234,7 @@ class TestCompatibility:
         assert total_edges == expected_edges, f"Expected {expected_edges} edges, got {total_edges}"
 
     def test_front_door_exclusion(self, front_door_exclusion_data):
-        graph = RPLANGraph.from_ds2d(front_door_exclusion_data)
+        graph = RPLANGraph.from_floorplan_json(front_door_exclusion_data)
         # Should have 3 room nodes (2 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 3
         # Should have 1 edge (front_door connects to living_room)
@@ -245,9 +245,9 @@ class TestCompatibility:
         assert labeled_adj['kitchen'] == []
         assert labeled_adj['front_door'] == ['living_room']
 
-    def test_single_door_compatibility(self, multiple_doors_ds2d_data):
+    def test_single_door_compatibility(self, multiple_doors_floorplan_json_data):
         """Test that rooms with multiple doors are not connected (invalid connections rejected)"""
-        graph = RPLANGraph.from_ds2d(multiple_doors_ds2d_data)
+        graph = RPLANGraph.from_floorplan_json(multiple_doors_floorplan_json_data)
         
         # Should have 6 room nodes (5 rooms + 1 front_door)
         assert len(graph.graph.nodes()) == 6
@@ -320,17 +320,17 @@ class TestCompatibility:
 
     def test_floating_interior_door_penalty(self, floating_interior_door_data, expected_graph_without_floating_doors):
         """Test that floating interior doors are properly penalized in compatibility scores"""
-        # Create graph from DS2D data (may have floating doors)
-        graph_with_floating = RPLANGraph.from_ds2d(floating_interior_door_data)
+        # Create graph from Floorplan JSON data (may have floating doors)
+        graph_with_floating = RPLANGraph.from_floorplan_json(floating_interior_door_data)
         
         # Create expected graph without floating doors
         graph_without_floating = RPLANGraph.from_labeled_adjacency(expected_graph_without_floating_doors)
         
         # Count floating doors in both graphs
-        floating1 = graph_with_floating._count_floating_interior_doors_from_ds2d(floating_interior_door_data)
+        floating1 = graph_with_floating._count_floating_interior_doors_from_floorplan_json(floating_interior_door_data)
         floating2 = 0  # The expected graph never has floating doors
         
-        print(f"Floating doors in DS2D graph: {floating1}")
+        print(f"Floating doors in Floorplan JSON graph: {floating1}")
         print(f"Floating doors in expected graph: {floating2}")
         
         # Test compatibility scores

@@ -220,5 +220,5 @@ if __name__ == "__main__":
 
 # Usage examples:
 # python src/utils/push_model_to_hub.py --repo_name "my-awesome-model" --verbose
-# python src/utils/push_model_to_hub.py --repo_name "ds2d-model" --organization "your-org" -v
+# python src/utils/push_model_to_hub.py --repo_name "floorplan-generation-model" --organization "your-org" -v
 # python src/utils/push_model_to_hub.py --repo_name "private-model" --private --verbose

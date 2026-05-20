@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=ds2d-train
+#SBATCH --job-name=floorplan-train
 #SBATCH --output=log/job_output.log
 #SBATCH --error=log/job_error.log
 #SBATCH --nodes=1
@@ -13,7 +13,7 @@ export PYTHONPATH="$PYTHONPATH:/."
 module load python/3.11
 module load arrow
 module load cuda/12
-source $SCRATCH/env/ds2d/bin/activate
+source $SCRATCH/env/floorplan-generation/bin/activate
 
 EPOCHS=${2:-30} 
 OUTPUT_DIR="output/v3_${EPOCHS}/"

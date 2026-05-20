@@ -19,7 +19,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     payload = {
-        # "model_name": "DS2D v2",
+        # "model_name": "Floorplan Generation v2",
         "eval_path": eval_path,
         "stats": {k: {"mean": round(stats[k][0], args.viz_round), "std": round(stats[k][1], args.viz_round)} for k, _ in evaluator.metric_keys},
         # "valid_indices": valid_indices,

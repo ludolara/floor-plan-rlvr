@@ -61,8 +61,7 @@ class RPLANGraph:
         return inst
 
     @classmethod
-    def from_ds2d(cls, data: Dict[str,Any], gap_threshold: float = 0.2, boundary_tolerance: float = 0.3, overlap_threshold: float = 0.3) -> "RPLANGraph":
-    # def from_ds2d(cls, data: Dict[str,Any], gap_threshold: float = 2, boundary_tolerance: float = 3, overlap_threshold: float = 0.3) -> "RPLANGraph":
+    def from_floorplan_json(cls, data: Dict[str,Any], gap_threshold: float = 0.2, boundary_tolerance: float = 0.3, overlap_threshold: float = 0.3) -> "RPLANGraph":
         inst = cls(data)  # Store the original data
         room_polys = {}
         door_polys = {}
@@ -70,14 +69,14 @@ class RPLANGraph:
 
         # Validate data structure
         if not isinstance(data, dict) or "spaces" not in data:
-            print(f"ERROR: from_ds2d data is malformed: {data}")
+            print(f"ERROR: from_floorplan_json data is malformed: {data}")
             inst.door_idxs = set()
             inst.graph = nx.Graph()
             return inst
 
         spaces = data["spaces"]
         if not isinstance(spaces, list):
-            print(f"ERROR: from_ds2d spaces is not a list: {spaces}")
+            print(f"ERROR: from_floorplan_json spaces is not a list: {spaces}")
             inst.door_idxs = set()
             inst.graph = nx.Graph()
             return inst
@@ -85,24 +84,24 @@ class RPLANGraph:
         for idx, item in enumerate(spaces):
             # Validate item is a dictionary
             if not isinstance(item, dict):
-                print(f"ERROR: from_ds2d room {idx} is not a dict: {item}")
+                print(f"ERROR: from_floorplan_json room {idx} is not a dict: {item}")
                 continue
 
             # Validate required keys exist
             if "floor_polygon" not in item or "room_type" not in item:
-                print(f"ERROR: from_ds2d room {idx} missing required keys: {item}")
+                print(f"ERROR: from_floorplan_json room {idx} missing required keys: {item}")
                 continue
 
             floor_polygon = item["floor_polygon"]
             if not isinstance(floor_polygon, list):
-                print(f"ERROR: from_ds2d room {idx} floor_polygon is not a list: {floor_polygon}")
+                print(f"ERROR: from_floorplan_json room {idx} floor_polygon is not a list: {floor_polygon}")
                 continue
 
             try:
                 coords = []
                 for pt_idx, pt in enumerate(floor_polygon):
                     if not isinstance(pt, dict) or "x" not in pt or "y" not in pt:
-                        print(f"ERROR: from_ds2d room {idx} point {pt_idx} is malformed: {pt}")
+                        print(f"ERROR: from_floorplan_json room {idx} point {pt_idx} is malformed: {pt}")
                         break
                     coords.append((pt["x"], pt["y"]))
 
@@ -115,7 +114,7 @@ class RPLANGraph:
                 else:
                     room_polys[idx] = poly
             except Exception as e:
-                print(f"ERROR: from_ds2d processing room {idx}: {e}")
+                print(f"ERROR: from_floorplan_json processing room {idx}: {e}")
                 continue
         inst.door_idxs = set(door_polys.keys())
         G = nx.Graph()
@@ -262,8 +261,8 @@ class RPLANGraph:
         """Helper method to count front door nodes"""
         return sum(1 for n in graph.nodes() if graph.nodes[n]['room_type'] == 15)
 
-    def _count_floating_interior_doors_from_ds2d(self, data: Dict[str, Any]) -> int:
-        """Helper method to count floating interior doors from DS2D data"""
+    def _count_floating_interior_doors_from_floorplan_json(self, data: Dict[str, Any]) -> int:
+        """Helper method to count floating interior doors from Floorplan JSON data"""
         if not isinstance(data, dict) or "spaces" not in data:
             return 0
 
@@ -323,7 +322,7 @@ class RPLANGraph:
     def _get_floating_interior_door_count(self, obj) -> int:
         floorplan = getattr(obj, 'floorplan', None)
         if isinstance(floorplan, dict) and "spaces" in floorplan:
-            return self._count_floating_interior_doors_from_ds2d(floorplan)
+            return self._count_floating_interior_doors_from_floorplan_json(floorplan)
         return 0
 
     def compatibility_score(self, other: "RPLANGraph") -> int:

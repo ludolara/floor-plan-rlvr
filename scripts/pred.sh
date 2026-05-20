@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=ds2d-inference
+#SBATCH --job-name=floorplan-inference
 #SBATCH --output=log_inference/job_output.log
 #SBATCH --error=log_inference/job_error.log
 #SBATCH --nodes=1

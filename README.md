@@ -1,4 +1,4 @@
-### DS2D – Floorplan Generation (Dataset → SFT → GRPO → Inference)
+### Floorplan Generation (Dataset → SFT → GRPO → Inference)
 
 Train and evaluate large models for 2D floorplan generation from the RPLAN dataset using a two-stage recipe: Supervised Fine-Tuning (SFT) followed by GRPO, then run inference with vLLM.
 
@@ -101,4 +101,4 @@ Outputs per sample are stored under `results/<exp>/<index>/` with `0.json` (pred
 ### References
 
 - RPLAN request form: https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform
-- HouseGAN data reader for RPLAN raster → JSON conversion: https://github.com/sepidsh/Housegan-data-reader 
+- HouseGAN data reader for RPLAN raster → JSON conversion: https://github.com/sepidsh/Housegan-data-reader

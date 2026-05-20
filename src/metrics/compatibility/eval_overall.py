@@ -51,7 +51,7 @@ class Evaluate:
                 if not is_valid_json(output):
                     continue
 
-                # input_graph = RPLANGraph.from_ds2d(output)
+                # input_graph = RPLANGraph.from_floorplan_json(output)
                 
                 spaces = output.get('spaces', [])
                 door_types = {'interior_door'}
@@ -110,7 +110,7 @@ class Evaluate:
                 if not is_valid_json(output):
                     continue
 
-                input_graph = RPLANGraph.from_ds2d(output)
+                input_graph = RPLANGraph.from_floorplan_json(output)
                 
                 spaces = output.get('spaces', [])
                 door_types = {'interior_door'}
@@ -147,7 +147,7 @@ class Evaluate:
     def evaluate(self, valid_indices=None):
         """
         Compute raw compatibility stats for each room_count in self.room_counts
-        and print a Markdown table (Model: DS2D v2).
+        and print a Markdown table (Model: Floorplan Generation v2).
         If valid_indices is provided, only compute stats on those indices.
         Returns (stats, all_valid_indices) where all_valid_indices contains the indices 
         of valid JSON instances for each room count.
@@ -170,7 +170,7 @@ class Evaluate:
         header = "| " + " | ".join(header_cells) + " |"
         divider = "|" + "|".join(["------------"] * len(header_cells)) + "|"
 
-        row_cells = ["DS2D v2"]
+        row_cells = ["Floorplan Generation v2"]
         for rc in self.room_counts:
             if rc in stats:
                 if stats[rc][0] is not None:

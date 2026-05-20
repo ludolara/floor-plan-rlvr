@@ -45,7 +45,7 @@ def _select_least(candidates, input_prompt):
 
         # Third priority: compatibility score
         try:
-            output_graph = RPLANGraph.from_ds2d(output_json)
+            output_graph = RPLANGraph.from_floorplan_json(output_json)
             expected_graph = RPLANGraph.from_labeled_adjacency(
                 input_prompt.get("input_graph", {})
             )

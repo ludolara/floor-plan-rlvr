@@ -64,7 +64,7 @@ class GRPOEvaluator:
                 total_area_ratio = 0
 
             input_graph = RPLANGraph.from_labeled_adjacency(input_graph_json)
-            output_graph = RPLANGraph.from_ds2d(output_floor_plan)
+            output_graph = RPLANGraph.from_floorplan_json(output_floor_plan)
             compatibility_score = output_graph.compatibility_score_scaled(input_graph)
 
 #             print(f"""

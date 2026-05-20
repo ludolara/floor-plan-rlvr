@@ -5,7 +5,7 @@ import torch
 from datetime import datetime
 from tqdm import tqdm
 from pytorch_fid.fid_score import calculate_fid_given_paths
-from src.plot.housediffusion_visualizer import HouseDiffusionVisualizerDS2D
+from src.plot.housediffusion_visualizer import HouseDiffusionFloorplanVisualizer
 from src.plot.direct_visualizer import DirectVisualizer
 
 class DiversityMetricGenerator:
@@ -19,7 +19,7 @@ class DiversityMetricGenerator:
         """
         self.results_dir = Path(results_dir).name
         self.resolution = resolution
-        self.visualizer = HouseDiffusionVisualizerDS2D(resolution=resolution)
+        self.visualizer = HouseDiffusionFloorplanVisualizer(resolution=resolution)
         self.direct_visualizer = DirectVisualizer(resolution=resolution)
         
         # Set up paths - save in project root under results_diversity
@@ -73,7 +73,7 @@ class DiversityMetricGenerator:
             
             # Generate HouseDiffusion PNG image for the generated floorplan
             output_path = self.generated_path / f"{sample_id}.png"
-            img = self.visualizer.visualize_floorplan_ds2d(
+            img = self.visualizer.visualize_floorplan_json(
                 str(generated_json),
                 save_path=str(output_path),
                 save_svg=False,
@@ -82,7 +82,7 @@ class DiversityMetricGenerator:
             
             # Generate HouseDiffusion SVG image for the generated floorplan
             svg_output_path = self.generated_svg_path / f"{sample_id}.svg"
-            svg_img = self.visualizer.visualize_floorplan_ds2d(
+            svg_img = self.visualizer.visualize_floorplan_json(
                 str(generated_json),
                 save_path=str(svg_output_path),
                 save_svg=True,
@@ -104,7 +104,7 @@ class DiversityMetricGenerator:
                         if "spaces" in gt_data:
                             # HouseDiffusion ground truth visualization
                             gt_output_path = self.ground_truth_path / f"{sample_id}.png"
-                            gt_img = self.visualizer.visualize_floorplan_ds2d(
+                            gt_img = self.visualizer.visualize_floorplan_json(
                                 str(ground_truth_json),
                                 save_path=str(gt_output_path),
                                 save_svg=False,

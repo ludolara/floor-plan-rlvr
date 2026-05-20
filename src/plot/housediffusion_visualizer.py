@@ -7,7 +7,7 @@ from PIL import ImageDraw
 import io
 import cv2 as cv
 
-class HouseDiffusionVisualizerDS2D:
+class HouseDiffusionFloorplanVisualizer:
     """
     Enhanced HouseDiffusion visualizer that works with the custom my_data_format.json format.
     Provides the same visualization as HouseDiffusionVisualizer but with different input format.
@@ -15,7 +15,7 @@ class HouseDiffusionVisualizerDS2D:
     
     def __init__(self, resolution=256):
         """
-        Initialize the DS2D visualizer.
+        Initialize the Floorplan JSON visualizer.
         
         Args:
             resolution (int): The output image resolution (default: 256)
@@ -72,9 +72,9 @@ class HouseDiffusionVisualizerDS2D:
         # Door indices from the original system (including interior doors and walls)
         self.door_indices = [15, 17]
     
-    def reader_ds2d(self, filename):
+    def reader_floorplan_json(self, filename):
         """
-        Read and process the DS2D format JSON file using mask-based approach to eliminate gaps.
+        Read and process the floorplan JSON file using a mask-based approach to eliminate gaps.
         This replicates the exact mask processing logic from the original HouseDiffusion system.
         
         Args:
@@ -159,9 +159,9 @@ class HouseDiffusionVisualizerDS2D:
         
         return rooms_data
     
-    def visualize_floorplan_ds2d(self, filename, save_path=None, save_svg=False, show_edges=False):
+    def visualize_floorplan_json(self, filename, save_path=None, save_svg=False, show_edges=False):
         """
-        Visualize floorplan from DS2D format JSON file.
+        Visualize a floorplan JSON file.
         Uses the same visualization logic as the original HouseDiffusion system.
         
         Args:
@@ -173,8 +173,8 @@ class HouseDiffusionVisualizerDS2D:
         Returns:
             PIL.Image: The generated floorplan image
         """
-        # Read and process the DS2D data
-        spaces = self.reader_ds2d(filename)
+        # Read and process the Floorplan JSON data
+        spaces = self.reader_floorplan_json(filename)
         
         if not spaces:
             print("No spaces found in the data file!")
@@ -300,21 +300,21 @@ if __name__ == "__main__":
     # Create output directory
     os.makedirs('output_hd', exist_ok=True)
     
-    # Example usage - DS2D format
+    # Example usage - Floorplan JSON format
     if os.path.exists('my_data_format.json'):
-        print("Creating DS2D visualization...")
-        visualizer_ds2d = HouseDiffusionVisualizerDS2D(resolution=256)
-        img_ds2d = visualizer_ds2d.visualize_floorplan_ds2d(
+        print("Creating Floorplan JSON visualization...")
+        visualizer = HouseDiffusionFloorplanVisualizer(resolution=256)
+        img = visualizer.visualize_floorplan_json(
             'my_data_format.json',
-            save_path='output_hd/floorplan_ds2d_complete.png',
+            save_path='output_hd/floorplan_complete.png',
             save_svg=True,      # Save both SVG and PNG
             show_edges=True     # Show corner points
         )
-        print("✅ DS2D visualization created!")
+        print("✅ Floorplan JSON visualization created!")
         print("📁 Output files:")
-        print("   - PNG: output_hd/floorplan_ds2d_complete.png")
-        print("   - SVG: output_hd/floorplan_ds2d_complete.svg")
+        print("   - PNG: output_hd/floorplan_complete.png")
+        print("   - SVG: output_hd/floorplan_complete.svg")
         print("\n🏠 Includes: spaces and doors from my_data_format.json")
     else:
         print("❌ my_data_format.json not found!")
-        print("Please make sure the file exists in the current directory.") 
+        print("Please make sure the file exists in the current directory.")

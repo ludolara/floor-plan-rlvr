@@ -16,7 +16,7 @@ output_dir = f"final_results/{result_folder}"
 os.makedirs(output_dir, exist_ok=True)
 
 json_data = {
-    "model_name": "DS2D v2",
+    "model_name": "Floorplan Generation v2",
     "eval_path": eval_path,
     "room_counts": overall_evaluation.room_counts,
     "stats": {}

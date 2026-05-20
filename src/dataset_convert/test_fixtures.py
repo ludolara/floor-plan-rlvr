@@ -1,8 +1,8 @@
 import pytest
 
 @pytest.fixture
-def sample_ds2d_data():
-    """Fixture providing sample DS2D data for testing"""
+def sample_floorplan_json_data():
+    """Fixture providing sample Floorplan JSON data for testing"""
     return {
         "room_count": 7,
         "spaces": [
@@ -170,8 +170,8 @@ def sample_ds2d_data():
     }
 
 @pytest.fixture
-def complex_ds2d_data():
-    """Fixture providing complex DS2D data with 8 spaces for connectivity testing"""
+def complex_floorplan_json_data():
+    """Fixture providing complex Floorplan JSON data with 8 spaces for connectivity testing"""
     return {
         "room_count": 8,
         "spaces": [
@@ -373,8 +373,8 @@ def complex_ds2d_data():
     }
 
 @pytest.fixture
-def generated_ds2d_data():
-    """Fixture providing generated DS2D data with disconnected spaces for testing"""
+def generated_floorplan_json_data():
+    """Fixture providing generated Floorplan JSON data with disconnected spaces for testing"""
     return {
         "room_count": 7,
         "spaces": [
@@ -542,7 +542,7 @@ def generated_ds2d_data():
     }
 
 @pytest.fixture
-def double_connection_balcony_ds2d_data():
+def double_connection_balcony_floorplan_json_data():
     """8-room floorplan with balcony having double connections to bedroom and study room"""
     return {
         "room_count": 8,
@@ -742,7 +742,7 @@ def double_connection_balcony_ds2d_data():
     }
 
 @pytest.fixture
-def containment_issue_ds2d_data():
+def containment_issue_floorplan_json_data():
     """8-room floorplan with bathroom contained inside bedroom (invalid case)"""
     return {
         "room_count": 8,
@@ -939,7 +939,7 @@ def containment_issue_ds2d_data():
     }
 
 @pytest.fixture
-def multiple_doors_ds2d_data():
+def multiple_doors_floorplan_json_data():
     """Fixture with multiple doors connecting the same rooms (invalid case)"""
     return {
         "room_count": 5,
