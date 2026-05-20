@@ -283,5 +283,5 @@ If you use this repository, please cite:
 ## Acknowledgements
 
 - We acknowledge the RPLAN dataset and its authors for making the dataset available for research under a restricted-access data-use agreement. This repository does not redistribute RPLAN or processed versions of RPLAN. Users must request access through the official RPLAN form: https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform
-- We acknowledge the HouseGAN data reader, which was used as part of the RPLAN-to-HouseGAN++ JSON conversion workflow: https://github.com/sepidsh/Housegan-data-reader
-- This repository uses Llama-3.3-70B-Instruct as the base language model. We acknowledge Meta for releasing the Llama model family.
+- We acknowledge the HouseGAN data reader for supporting part of our floor-plan conversion workflow: https://github.com/sepidsh/Housegan-data-reader
+- We use Llama-3.3-70B-Instruct as the base model and acknowledge Meta for releasing the Llama model family.
