@@ -1,6 +1,4 @@
-Here is the full version, with your original paths preserved. 
 
-````markdown
 # Generative Floor Plan Design with LLMs via RLVR
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.14117-b31b1b.svg)](https://arxiv.org/abs/2605.14117)
@@ -365,6 +363,3 @@ If you use this repository, please cite:
 * RPLAN request form: [https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform)
 * HouseGAN data reader: [https://github.com/sepidsh/Housegan-data-reader](https://github.com/sepidsh/Housegan-data-reader)
 * Hugging Face collection: [https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
-
-```
-```
