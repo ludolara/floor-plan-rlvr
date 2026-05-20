@@ -7,13 +7,13 @@ from huggingface_hub import HfApi
 ROOT = Path(__file__).resolve().parents[1]
 
 MODELS = [
-    (
-        "fp5-llama3.3-rlvr",
-        Path("/home/l/luislara/links/projects/aip-pal/luislara/output/rplan5_70B_r64_GRPO_7n/checkpoint-100"),
-        5,
-        "0.01 +/- 0.14",
-        "8.96 +/- 0.00",
-    ),
+    # (
+    #     "fp5-llama3.3-rlvr",
+    #     Path("/home/l/luislara/links/projects/aip-pal/luislara/output/rplan5_70B_r64_GRPO_7n/checkpoint-100"),
+    #     5,
+    #     "0.01 +/- 0.14",
+    #     "8.96 +/- 0.00",
+    # ),
     (
         "fp6-llama3.3-rlvr",
         Path("/home/l/luislara/links/projects/aip-pal/luislara/output/rplan6_70B_r64_GRPO_7n/checkpoint-100"),
@@ -70,7 +70,6 @@ RLVR-trained Llama-3.3-70B model for generating {room_count}-room RPLAN floor pl
 - Base model: `meta-llama/Llama-3.3-70B-Instruct`
 - Training stages: supervised fine-tuning followed by RLVR/GRPO
 - Task: RPLAN {room_count}-room floor-plan generation
-- Local source checkpoint: `rplan{room_count}_70B_r64_GRPO_7n/checkpoint-100`
 - Format: full merged causal language model checkpoint
 
 ## Reported RLVR Metrics
