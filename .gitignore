@@ -10,6 +10,7 @@ output/
 log*/
 results*/
 final_results*/
+final_models*/
 floorplan*/
 OLD*/
 .env

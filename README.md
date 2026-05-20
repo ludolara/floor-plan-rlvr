@@ -2,6 +2,8 @@
 # Generative Floor Plan Design with LLMs via RLVR
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.14117-b31b1b.svg)](https://arxiv.org/abs/2605.14117)
+[![SFT Model](https://img.shields.io/badge/Hugging%20Face-SFT%20Model-FFD21E.svg)](https://huggingface.co/ludolara/fp5-sft-Llama3.3-70B)
+[![SFT + RLVR Model](https://img.shields.io/badge/Hugging%20Face-SFT%20%2B%20RLVR%20Model-FFD21E.svg)](https://huggingface.co/ludolara/fp5-rlvr-Llama3.3-70B)
 [![Hugging Face Collection](https://img.shields.io/badge/Hugging%20Face-Collection-FFD21E.svg)](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
 
 This repository contains the code for **Generative Floor Plan Design with LLMs via Reinforcement Learning with Verifiable Rewards**.
@@ -256,9 +258,14 @@ In the most complex 8-room setting, the method reduces Compatibility by 94% rela
 
 ## Models
 
-Models are available in the Hugging Face collection:
+The recommended checkpoints below are the held-out 5-room models. They were trained on the more complex 6-, 7-, and 8-room tasks, then evaluated on 5-room prompts that were not used during training, making them the best checkpoints to try.
 
-[https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
+* **SFT**: [ludolara/fp5-sft-Llama3.3-70B](https://huggingface.co/ludolara/fp5-sft-Llama3.3-70B) - LoRA adapter.
+* **SFT + RLVR**: [ludolara/fp5-rlvr-Llama3.3-70B](https://huggingface.co/ludolara/fp5-rlvr-Llama3.3-70B) - full checkpoint trained from the SFT model with RLVR.
+
+The rest of the models are available in the Hugging Face collection:
+
+[![Hugging Face Collection](https://img.shields.io/badge/Hugging%20Face-Collection-FFD21E.svg)](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
 
 ---
 
