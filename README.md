@@ -9,7 +9,7 @@ This repository contains the code for **Generative Floor Plan Design with LLMs v
 The project trains large language models to generate **2D floor plans as structured JSON** from explicit design constraints, including room count, target areas, and a bubble diagram specifying room connectivity. The full pipeline goes from RPLAN preprocessing to supervised fine-tuning, RLVR training, and batched inference with vLLM.
 
 ```text
-RPLAN rasters -> HouseGAN++ JSONs -> Hugging Face datasets -> SFT -> RLVR -> vLLM inference
+RPLAN rasters -> HouseGAN++ JSONs -> Custom HF datasets -> SFT -> RLVR -> vLLM inference
 ````
 
 ---
@@ -25,51 +25,6 @@ Most prior floor-plan generation systems operate on raster images or condition o
 
 The RLVR stage uses automatically computable rewards to encourage valid JSON outputs, correct connectivity, accurate total area, and non-overlapping room polygons.
 
----
-
-## Repository Structure
-
-```text
-floor-plan-rlvr/
-  datasets/
-    rplan_json/
-
-    rplan_5/
-      train/
-      validation/
-      test/
-
-    rplan_6/
-      train/
-      validation/
-      test/
-
-    rplan_7/
-      train/
-      validation/
-      test/
-
-    rplan_8/
-      train/
-      validation/
-      test/
-
-  scripts/
-    train_multi_node.slurm
-    grpo_multi_node.slurm
-
-  src/
-    dataset_convert/
-      rplan.py
-
-    pred/
-      run_generation.py
-
-    grpo/
-      reward_calculator.py
-```
-
----
 
 ## 1. Dataset Preparation
 
@@ -97,37 +52,12 @@ datasets/
   rplan_json/
 ```
 
-### Step 3: Convert JSONs to Hugging Face datasets
+### Step 3: Convert JSONs to Custom HF datasets
 
 Run:
 
 ```bash
 python src/dataset_convert/rplan.py
-```
-
-This creates room-count-specific datasets:
-
-```text
-datasets/
-  rplan_5/
-    train/
-    validation/
-    test/
-
-  rplan_6/
-    train/
-    validation/
-    test/
-
-  rplan_7/
-    train/
-    validation/
-    test/
-
-  rplan_8/
-    train/
-    validation/
-    test/
 ```
 
 Each dataset contains structured examples with:
@@ -324,23 +254,15 @@ In the most complex 8-room setting, the method reduces Compatibility by 94% rela
 
 ---
 
-## 7. Hugging Face Resources
+## 7. Models
 
-Models and related resources are available in the Hugging Face collection:
+Models are available in the Hugging Face collection:
 
 [https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
 
 ---
 
-## 8. Data Use Notice
-
-This repository does not redistribute RPLAN or processed versions of RPLAN.
-
-RPLAN is released under a restricted-access research-only data-use agreement. Users must request access through the official RPLAN form and follow the dataset terms, including restrictions on redistribution and commercial use.
-
----
-
-## 9. Citation
+## 8. Citation
 
 If you use this repository, please cite:
 
@@ -355,6 +277,13 @@ If you use this repository, please cite:
   url = {https://arxiv.org/abs/2605.14117}
 }
 ```
+---
+
+## 9. Data Use Notice
+
+This repository does not redistribute RPLAN or processed versions of RPLAN.
+
+RPLAN is released under a restricted-access research-only data-use agreement. Users must request access through the official RPLAN form and follow the dataset terms, including restrictions on redistribution and commercial use.
 
 ---
 
@@ -362,4 +291,3 @@ If you use this repository, please cite:
 
 * RPLAN request form: [https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform)
 * HouseGAN data reader: [https://github.com/sepidsh/Housegan-data-reader](https://github.com/sepidsh/Housegan-data-reader)
-* Hugging Face collection: [https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
