@@ -254,7 +254,7 @@ In the most complex 8-room setting, the method reduces Compatibility by 94% rela
 
 ---
 
-## 7. Models
+## Models
 
 Models are available in the Hugging Face collection:
 
@@ -262,7 +262,7 @@ Models are available in the Hugging Face collection:
 
 ---
 
-## 8. Citation
+## Citation
 
 If you use this repository, please cite:
 
@@ -279,15 +279,14 @@ If you use this repository, please cite:
 ```
 ---
 
-## 9. Data Use Notice
+## Data Use Notice
 
 This repository does not redistribute RPLAN or processed versions of RPLAN.
 
 RPLAN is released under a restricted-access research-only data-use agreement. Users must request access through the official RPLAN form and follow the dataset terms, including restrictions on redistribution and commercial use.
 
----
+## Acknowledgements
 
-## References
-
-* RPLAN request form: [https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform)
-* HouseGAN data reader: [https://github.com/sepidsh/Housegan-data-reader](https://github.com/sepidsh/Housegan-data-reader)
+- We acknowledge the RPLAN dataset and its authors for making the dataset available for research under a restricted-access data-use agreement. Users must request access through the official RPLAN form: https://docs.google.com/forms/d/e/1FAIpQLSfwteilXzURRKDI5QopWCyOGkeb_CFFbRwtQ0SOPhEg0KGSfw/viewform
+- We acknowledge the HouseGAN data reader, which was used as part of the RPLAN-to-HouseGAN++ JSON conversion workflow: https://github.com/sepidsh/Housegan-data-reader
+- This repository uses Llama-3.3-70B-Instruct as the base language model. We acknowledge Meta for releasing the Llama 3.3 model family.
