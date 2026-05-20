@@ -274,6 +274,7 @@ If you use this repository, please cite:
   eprint = {2605.14117},
   archivePrefix = {arXiv},
   primaryClass = {cs.CL},
+  note = {Accepted to Findings of ACL 2026},
   url = {https://arxiv.org/abs/2605.14117}
 }
 ```
