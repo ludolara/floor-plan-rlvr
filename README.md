@@ -263,9 +263,7 @@ The recommended checkpoints below are the held-out 5-room models. They were trai
 * **SFT**: [ludolara/fp5-sft-Llama3.3-70B](https://huggingface.co/ludolara/fp5-sft-Llama3.3-70B) - LoRA adapter.
 * **SFT + RLVR**: [ludolara/fp5-rlvr-Llama3.3-70B](https://huggingface.co/ludolara/fp5-rlvr-Llama3.3-70B) - full checkpoint trained from the SFT model with RLVR.
 
-The rest of the models are available in the Hugging Face collection:
-
-[![Hugging Face Collection](https://img.shields.io/badge/Hugging%20Face-Collection-FFD21E.svg)](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
+The rest of the models are available in the Hugging Face collection: [https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
 
 ---
 
