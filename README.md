@@ -272,15 +272,28 @@ The rest of the models are available in the Hugging Face collection: [https://hu
 If you use this repository, please cite:
 
 ```bibtex
-@misc{lara2026fprlvr,
-  title = {Generative Floor Plan Design with LLMs via Reinforcement Learning with Verifiable Rewards},
-  author = {Lara, Luis and Milios, Aristides and Luo, Zhi Hao and Sharma, Aditya and Luo, Ge Ya and Beckham, Christopher and Golemo, Florian and Pal, Christopher},
-  year = {2026},
-  eprint = {2605.14117},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  note = {Accepted to Findings of ACL 2026},
-  url = {https://arxiv.org/abs/2605.14117}
+@inproceedings{lara-etal-2026-generative,
+    title = "Generative Floor Plan Design with {LLM}s via Reinforcement Learning with Verifiable Rewards",
+    author = "Lara, Luis  and
+      Milios, Aristides  and
+      Luo, ZhiHao  and
+      Sharma, Aditya  and
+      Luo, Ge Ya  and
+      Beckham, Christopher  and
+      Golemo, Florian  and
+      Pal, Christopher",
+    editor = "Liakata, Maria  and
+      Moreira, Viviane P.  and
+      Zhang, Jiajun  and
+      Jurgens, David",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {ACL} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-acl.1326/",
+    pages = "26612--26627",
+    ISBN = "979-8-89176-395-1"
 }
 ```
 ---
