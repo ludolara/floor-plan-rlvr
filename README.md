@@ -1,7 +1,7 @@
 
 # Generative Floor Plan Design with LLMs via RLVR
 
-[![arXiv](https://img.shields.io/badge/arXiv-2605.14117-b31b1b.svg)](https://arxiv.org/abs/2605.14117)
+[![ACL Anthology](https://img.shields.io/badge/ACL%20Anthology-Findings%20of%20ACL%202026-blue.svg)](https://aclanthology.org/2026.findings-acl.1326/)
 [![SFT Model](https://img.shields.io/badge/Hugging%20Face-SFT%20Model-FFD21E.svg)](https://huggingface.co/ludolara/fp5-sft-Llama3.3-70B)
 [![SFT + RLVR Model](https://img.shields.io/badge/Hugging%20Face-SFT%20%2B%20RLVR%20Model-FFD21E.svg)](https://huggingface.co/ludolara/fp5-rlvr-Llama3.3-70B)
 [![Hugging Face Collection](https://img.shields.io/badge/Hugging%20Face-Collection-FFD21E.svg)](https://huggingface.co/collections/ludolara/generative-floor-plan-design-with-llms-via-rlvr)
